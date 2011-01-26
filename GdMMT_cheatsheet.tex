@@ -179,6 +179,49 @@ $1GiB \Rightarrow 10^9 Byte || 1GB \Rightarrow 1024 \times 1024 \times 1024 Byte
 
 \section{Grafiken/Bilder}
 \subsection{Farbmodi}
+\begin{itemize}
+    \item \textbf{RGB} RotGr\"unBlau.\\
+        Additive Farbmischung mit drei Farbkan\"ale a 8Bit (default).
+        \begin{itemize}
+            \item \textbf{Anwendungen} Monitordarstellung, Kamera
+            \item \textbf{Vorteile} \\
+                Gut auf Ger\"aten anzuwenden, die Lichtquellen aussenden.\\
+                Direkt mit Algo bearbeitbar\\
+                Darstellungskapazit\"at vieler Farbnuancen
+            \item \textbf{Nachteil} \\
+                Probleme mit Darstellung von Schwarz \\
+                Ger\"ateabh\"angig. \\
+                8 \% des Farbraums sind nicht wahrnehmbare Farben \\
+                Helligkeitskorrektur schwer \\
+                Eignet sich nicht f\"ur Druck (Additiv/Substraktiv)
+        \end{itemize}
+    \item \textbf{YUV}
+        Darstellung durch Luminanz (Y) und Chrominanz (UV).
+        \begin{itemize}
+            \item \textbf{Anwendungen} Analoges NTSC/PAL-Farbfernsehen
+            \item \textbf{Vorteile} \\
+                Halbe Bandbreite von RGB \\
+                Durch Subsampling optimierung m\"oglich (siehe Subsampling)\\
+                Vollst\"andiger Farbraum abgedeckt\\
+                Abw\"artskompatibel zu Schwarz/Weiss\\
+                Ausnutzung Wahrnehmungspsychologie\\
+                Helligkeit separat im Gegensatz zu RGB (jeder Kanal muss angepasst werden)\\
+                Progressive Vollbilder m\"oglich
+            \item \textbf{Nachteil} \\
+                Verteilung der Farbanteile der Cyan/Orange und Megenta/Gr\"un ist ungleichm\"assig auf U und V, daher keine Bandbreitenreduktion m\"oglich
+        \end{itemize}
+    \item \textbf{YIQ}
+        Darstellung durch Luminanz (Y), sowie den Farbdifferenzen I (Cyan/Orange) und Q (Magenta/Gr\"un) \\
+        Irgendwie zu YUV verdreht! WHY? How much?
+        \begin{itemize}
+            \item \textbf{Anwendungen} Altes analoges NTSC-Farbfernsehen 
+            \item \textbf{Vorteile} \\
+                \"Ahnlich YUV \\
+                Kommt wahrscheinlich nicht in der Klausur dran (Jonas)
+            \item \textbf{Nachteil} \\
+                Nur \"uberm Teich im Gebrauch
+        \end{itemize}
+\end{itemize}
 
 \subsection{JPEG}
 
