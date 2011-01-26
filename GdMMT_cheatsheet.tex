@@ -1,0 +1,203 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.3in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+% Special commands
+\newcommand{\code}[1]{\texttt{#1}}
+
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{MuMeTech-CheatSheet}} \\
+\end{center}
+
+\section{Definition}
+\subsection{MuMeTech} ist rechnergef\"uhrt, unabh\"angig, diskret und kontinuierlich.\\
+\subsection{Kompression}
+Daten/Datenkan\"ale werden auf bestimmte Aufl\"osung/Genauigkeit/Abtastrate reduziert (Bei unterschiedlicher Reduzierung je nach Kanal, nennt man es Subsampling).
+\subsection{\"Ubertragungsmodi}
+\begin{itemize}
+    \item \textbf{synchron} Der Sender sendet direkt an den Empf\"anger, es kann erst weitergesendert werden, wenn die Daten empfangen werden. (Handy)
+    \item \textbf{asynchron} Die Daten werden w\"ahrend der \"Ubertragung zwischengepuffert, womit der Sender nicht auf den Empf\"anger warten muss. (Post,EMail)
+    \item \textbf{isochron} Zeitraster ist fest, konstante Periode und Datenrate. (USB)
+\end{itemize}
+
+\subsection{Medienarten}
+\begin{itemize}
+    \item \textbf{Perzeptionsm.} Wahrnehmung
+    \item \textbf{Repr\"asentationsm.} Darstellung
+    \item \textbf{Pr\"asentationsmedium} Ausgabe
+    \item \textbf{Speichermedium} Physikalischer Datenspeicher
+\end{itemize}
+
+\section{Kompressionsarten}
+\subsection{Huffmann}
+Zeichen werden nach ihrer H\"aufigkeit geordnet mit verschieden langen Codes repr\"asentiert.
+\subsection{Laufl\"angenkodierung}
+Fasst direkt aufeinanderfolgende Zeichenketten zusammen. ($aaabbb \Rightarrow 3a3b$)
+
+\section{Erdn\"usse}
+\subsection{FFT}
+Spaltet komplexes Signal in mehrere reine Sinusschwingungen auf, welche addiert das Orginalsignal ergeben.
+\subsection{DCT}
+Werden wichtige Elemente der darzustellenden Daten werden mit mehr Bandbreite versehen (Links-Oben-Bild)
+
+\section{Audio}
+\subsection{Begriffe}
+\begin{itemize}
+    \item \textbf{Phon} Empfundene Lautst\"arke im Verh\"altnis zu 1000 Hz Sinus. Skaliert normal (nicht log.).
+    \item \textbf{Dezibel} Logarithmisch ausgedr\"uckte Lautst\"arke 6dB Unterschied bedeuten Verdoppelung der Lautst\"arke.
+    \item \textbf{Frequenzamplitude} Amplitude wird angegeben in Dezibel und bestimmt die Lautst\"arke. Beschreibt maximale Auslenkung der Sinuswelle.
+    \item \textbf{Klang} Schallwelle die vom menschlichen Ohr als bestimmter Ton wahrgenommen wird.
+\end{itemize}
+\subsection{Analog2Digital}
+\begin{enumerate}
+    \item \textbf{Vorverarbeitung} Filterung (St\"orger\"ausche), Verst\"arkung (Dynamikausnutzung) \\
+    Im zweiten Schritt erfolgt eine Frequenzbandbegrenzung (Tiefpassfilter) auf $1/2$ der Abtastfrequenz (Shannon Abtasttherorem)
+    \item \textbf{Abtastung} In konstanten Intervallen wird der Wert des Eingangssignals entnommen.
+    \item \textbf{Quantisierung} Diskretisierung des bei der Abtastung ermittelten Wertes 
+    \item \textbf{Kodierung} Bin\"arkodierung der Signalproben
+\end{enumerate}
+\textbf{Zusammenfassend} \\
+Aus einem zeitkontinuierlich ablaufendem VOrgang werden Signalproben genommen und in ihrer Amplitude quantisiert und in eine computergerechte Darstellung gebracht.
+
+\subsection{Kodierungsmethoden}
+\textbf{Verlustbehaftet}
+\begin{itemize}
+    \item \textbf{PulseCodeModulation - PCM} 3 Schritte \\
+        \begin{itemize}
+        \item \textbf{Schritt 1} Abtastung mit zeitlich konst. Rate
+        \item \textbf{Schritt 2} Quantisierung der Werte
+        \item \textbf{Schritt 3} Kodierung in bin\"arcode \\
+            Die Kodierung erfolt linear. 
+        \end{itemize}
+    \item \textbf{DPCM} Differenzielle PCM \\
+        Die Quantisierung erfolgt anhand der Differenz zu einer Vorhersage.
+    \item \textbf{DeltaModulation} Eine DPCM mit nur einem Bit. Wertebereich -/+1.
+    Die Sch\"atzwerte nehmen dabei immer an, dass der neue Abtastwert gleich dem vorherigem ist.
+    \item \textbf{Adaptive differenzielle PCM} \"Ahnlich DPCM, jedoch mit dyamischer Vorhersage.
+     Angepasste Quantisierung, dadurch bessere Quali.
+\end{itemize}
+\subsection{Kompressionsverfahren f\"ur Audio}
+\subsubsection{Datenreduktion}
+Filterung der Daten (z.B. nach psychoakustik).
+\subsubsection{Datenkompression}
+Verlustfreie Komprimierung der Daten.
+
+\subsection{mp3}
+\begin{enumerate}
+    \item PCM (768Kbit/s)
+    \item Filterbank f\"ur 32 Subb\"ander / FastFourierTrans f\"ur 1024 Abtastwerte
+    \item FFT $\Rightarrow$ PsychAkModel nun wird anhand derer und der Subb\"ander quantisiert.
+    \item Audiodatenkodierung mit Huffmann, Nebeninfos codiert
+    \item BitstromFormatierung und Fehlerkorrektur
+\end{enumerate}
+
+\subsection{MIDI}
+Daten\"ubertragungsprotokoll f\"ur Musikdaten.\"Ubertragen werden Steuerinformationen zwischen elektronischen Instrumenten, welche von Programm interpretiert werden k\"onnen. \\
+Inhalt zum Beispiel: Anschlagst\"arke, Lautst\"arke, MidiKanalnummer (4Bit), Spurname \\
+\begin{itemize}
+    \item[Format 0] Alle Midikan\"ale sind in einer Spur zusammengefasst, somit keine gleichzeitigen Anschl\"age verschiedener Instrumente (Klingelton) 
+    \item[Format 1] Jeder Kanal hat eigene Spur, somit k\"onnen auch gleichzeitige Anschl\"age realisiert werden.
+    \item[Format 2] Im Format 2 besteht jede Spur (Track) aus unabh\"angigen Einheiten. Im Gegensatz zu SMF 1 k\"onnen also mehrere Spuren dieselbe MIDI-Kanal-Nummer haben.
+\end{itemize}
+\textbf{THRU-Port} gibt parallel zum Outport eines Ger\"ates (z.B. Filter) das unbehandelte Inputsignal aus (z.B. f\"ur Aufnahmen).
+
+\subsection{Beispielrechnungen}
+\subsubsection{44.1KHz,16Bit,stereo,20min}
+$44.100 \times 16 \times 2 \times 20 \times 60 \Rightarrow Bit$ \\
+$44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow Byte$ \\
+\textbf{Clever:} Nutzen von TiB,GiB,MiB,KiB \\
+$1MiB \Rightarrow 10^6 Byte || 1MB \Rightarrow 1024 \times 1024 Byte$ \\
+$1GiB \Rightarrow 10^9 Byte || 1GB \Rightarrow 1024 \times 1024 \times 1024 Byte$ \\
+
+
+\section{Grafiken/Bilder}
+\subsection{Farbmodi}
+
+\subsection{JPEG}
+
+\subsection{Beispielrechnungen}
+
+\section{Netzwerk/Internet}
+\subsection{IP-Adresse/Subnetzmaske}
+\subsection{\"Ubertragungsarten}
+\subsection{AJAX}
+\subsection{HTML5}
+\subsection{HTTP}
+
+\section{MPEG}
+\subsection{MPEG1}
+\subsection{MPEG4}
+\subsection{Beispielrechnung}
+
+\section{CD/DVD}
+
+
+\end{multicols}
+\end{document}
