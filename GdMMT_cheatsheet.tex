@@ -105,7 +105,7 @@ Fasst direkt aufeinanderfolgende Zeichenketten zusammen. ($aaabbb \Rightarrow 3a
 \subsection{FFT}
 Spaltet komplexes Signal in mehrere reine Sinusschwingungen auf, welche addiert das Orginalsignal ergeben.
 \subsection{DCT}
-Werden wichtige Elemente der darzustellenden Daten werden mit mehr Bandbreite versehen (Links-Oben-Bild)
+Wichtige Elemente der darzustellenden Daten werden mit mehr Bandbreite versehen (Links-Oben-Bild)
 
 \section{Audio}
 \subsection{Begriffe}
@@ -169,12 +169,13 @@ Inhalt zum Beispiel: Anschlagst\"arke, Lautst\"arke, MidiKanalnummer (4Bit), Spu
 \textbf{THRU-Port} gibt parallel zum Outport eines Ger\"ates (z.B. Filter) das unbehandelte Inputsignal aus (z.B. f\"ur Aufnahmen).
 
 \subsection{Beispielrechnungen}
-\subsubsection{44.1KHz,16Bit,stereo,20min}
+\textbf{Einheiten:} \\
+$1MB \Rightarrow 10^6 Byte || 1MiB \Rightarrow 1024 \times 1024 Byte$ \\
+$1GB \Rightarrow 10^9 Byte || 1GiB \Rightarrow 1024 \times 1024 \times 1024 Byte$ \\
+\subsubsection{PCM: 44.1KHz,16Bit,stereo,20min}
 $44.100 \times 16 \times 2 \times 20 \times 60 \Rightarrow Bit$ \\
-$44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow Byte$ \\
-\textbf{Clever:} Nutzen von TiB,GiB,MiB,KiB \\
-$1MiB \Rightarrow 10^6 Byte || 1MB \Rightarrow 1024 \times 1024 Byte$ \\
-$1GiB \Rightarrow 10^9 Byte || 1GB \Rightarrow 1024 \times 1024 \times 1024 Byte$ \\
+$44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow 2116800 Byte \approx 2.1 MB$ \\
+\subsubsection{MP3: 128kbit/s}
 
 
 \section{Grafiken/Bilder}
@@ -224,8 +225,37 @@ $1GiB \Rightarrow 10^9 Byte || 1GB \Rightarrow 1024 \times 1024 \times 1024 Byte
 \end{itemize}
 
 \subsection{JPEG}
-
-\subsection{Beispielrechnungen}
+\subsubsection{JPEG-Kodierung}
+\begin{itemize}
+    \item \textbf{Bildvorverarbeitung (verlustfrei)}
+        \begin{itemize}
+            \item Grauwerttransformation (Kontrasterh\"ohung und Helligkeitsverbesserung)
+            \item Bildfilterung (Rauschunterdr\"uckung,Kantenverst\"arkung,Gl\"attung,...)
+        \end{itemize}
+    \item \textbf{Bildverarbeitung (theo. verlustfrei)}
+    \begin{itemize}
+        \item Abtastung und Digitaliserung der Bildinformationen.
+        \item Einteilung in 8x8-Pixel-Bl\"ocke, wobei jeder Pixel mit 8bit kodiert wird (optimaler Kompromis zwischen Laufzeit und Quali; Zahl f\"ur DCT).
+        \item DCT Der 8Bit-Farbwert wird vom Ortsbereich- in den Frequenzbereich transformiert. \\
+            Das Ergebnis ist eine 8x8-Frequenzraummatrix S, $S_{00}$ entspricht dem Anteil der Freuqenz 0 (Grundfarbton), dieser ist der DC-Koeffizient.\\
+            Alle anderen $S_{ij}$ heissen AC-Koeffizienten und geben Auskunft \"uber die Frequenzver\"anderungen (Farbver.) innerhalb des Blockes.\\
+            Der letzte Eintrag $S_{77}$ gibt dabei die h\"ochste in beiden Richtungen auftretene Frequenz an.
+    \end{itemize}
+    \item \textbf{Quantisierung (verlustbehaftet)} Erstellen einer ZickZack-Sequenz (Diagonaler Schnitt von links-oben an). Ausnutzung des PsychoVisuellenModels (PVM).
+        Die Anwendung stellt eine Liste mit 64 Faktoren zur Verf\"ugung. Anhand dieser werden die DCT-Koeffizienten gewichtet (und gerundet),
+        wodurch die Freuqenzwechsel an die Qualit\"atsanforderung angepasst werden.\\
+        Wird die Qualit\"at reduziert, so ist die rechte untere Dreiecksmatrix mit Nullen versehen. Dies kommt der Entropiekodierung zu Gute.
+    \item \textbf{Entropiekodierung (verlustfrei)} Die resultierdende Liste wird mit Huffmann oder aritmetisch kodiert.    
+\end{itemize}
+\subsubsection{JPEG-Modi}
+\begin{itemize}
+    \item \textbf{Sequenzielle mode} Das Bild wir din einem einzigen Durchlauf kodiert.
+    \item \textbf{progressive mode} Das Bild wird in mehreren Durchl\"aufen immer genauer kodiert.\\
+        Vorteil: Schnelle (grobpixelige) Vorschau des Bildes
+    \item \textbf{Hirachischer Modus} Das Bild wird in verschiedenen Aufl\"osungen kodiert.\\
+        Vorteil: Jede Anwendung greift sich ihre geeignete Aufl\"osung heraus und muss nicht rekodieren.
+    \item \textbf{lossless mode} Verlustfreie Kodierung des Bildes
+\end{itemize}
 
 \section{Netzwerk/Internet}
 \subsection{IP-Adresse/Subnetzmaske}
@@ -238,7 +268,9 @@ $1GiB \Rightarrow 10^9 Byte || 1GB \Rightarrow 1024 \times 1024 \times 1024 Byte
 \subsection{MPEG1}
 \subsection{MPEG4}
 \subsection{Beispielrechnung}
-
+\subsubsection{MPEG}
+Bei 800x600, 24Bit, 25fps, 60s sind es pro Minute:\\
+$800 \times 600 \times 24 \times 25 \times 60 \Rightarrow 4320 \times 10^6 Byte$
 \section{CD/DVD}
 
 

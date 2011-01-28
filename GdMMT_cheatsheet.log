@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.1.22)  26 JAN 2011 20:20
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.1.22)  28 JAN 2011 17:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -513,83 +513,32 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 102.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 102.
-
-/Users/kniepbert/Documents/Studium/WS10-11/MuMeTechShitShit/GdMMT_cheatsheet.te
-x:194: Undefined control sequence.
-l.194                 8 \percent
-                                 des Farbraums sind nicht wahrnehmbare Farbe...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[1
+ [1
 
 {/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \vbox (44.16656pt too high) has occurred while \output is active []
 
+/Users/kniepbert/Documents/Studium/WS10-11/MuMeTechShitShit/GdMMT_cheatsheet.te
+x:233: LaTeX Error: \begin{itemize} on input line 230 ended by \end{item}.
 
-Overfull \vbox (43.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (42.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (41.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (40.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (39.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (38.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (37.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (36.16656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (36.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (35.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (34.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (33.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (32.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (31.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (30.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (29.66656pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (28.66656pt too high) has occurred while \output is active []
-
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.233         \end{item}
+                        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 [2] (./GdMMT_cheatsheet.aux) ) 
 Here is how much of TeX's memory you used:
- 3865 strings out of 493747
- 53640 string characters out of 3143546
+ 3866 strings out of 493747
+ 53647 string characters out of 3143546
  135584 words of memory out of 3000000
- 7115 multiletter control sequences out of 15000+200000
+ 7116 multiletter control sequences out of 15000+200000
  7897 words of font info for 28 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,4n,32p,341b,265s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,4n,32p,341b,392s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/pub
@@ -599,7 +548,7 @@ amsfonts/cm/cmmi8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmr6.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmr8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy8.pfb>
-Output written on GdMMT_cheatsheet.pdf (2 pages, 112676 bytes).
+Output written on GdMMT_cheatsheet.pdf (2 pages, 116930 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream
