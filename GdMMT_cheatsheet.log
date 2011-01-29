@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.1.22)  28 JAN 2011 17:58
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.1.22)  29 JAN 2011 15:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -515,43 +515,53 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 102.
  [1
 
-{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 /Users/kniepbert/Documents/Studium/WS10-11/MuMeTechShitShit/GdMMT_cheatsheet.te
-x:233: LaTeX Error: \begin{itemize} on input line 230 ended by \end{item}.
+x:350: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.233         \end{item}
-                        
+l.350 \\
+        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[2] (./GdMMT_cheatsheet.aux) ) 
+<Image1.png, id=19, 422.57875pt x 361.35pt>
+File: Image1.png Graphic file (type png)
+ <use Image1.png>
+Overfull \hbox (183.52646pt too wide) in paragraph at lines 351--352
+[]  
+ []
+
+[3 </Users/kniepbert/Documents/Studium/WS10-11/MuMeTechShitShit/Image1.png (PNG
+ copy)>] (./GdMMT_cheatsheet.aux) ) 
 Here is how much of TeX's memory you used:
- 3866 strings out of 493747
- 53647 string characters out of 3143546
+ 3877 strings out of 493747
+ 53783 string characters out of 3143546
  135584 words of memory out of 3000000
- 7116 multiletter control sequences out of 15000+200000
- 7897 words of font info for 28 fonts, out of 3000000 for 9000
+ 7124 multiletter control sequences out of 15000+200000
+ 8065 words of font info for 29 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  38i,4n,32p,341b,392s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2010/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr6.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy8.pfb>
-Output written on GdMMT_cheatsheet.pdf (2 pages, 116930 bytes).
+</usr/local/texlive/2010/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2010/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2010/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr6.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy8.pfb></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt8.pfb>
+Output written on GdMMT_cheatsheet.pdf (3 pages, 155068 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

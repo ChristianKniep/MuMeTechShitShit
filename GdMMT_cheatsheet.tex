@@ -259,20 +259,143 @@ $44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow 2116800 Byte \approx 2
 
 \section{Netzwerk/Internet}
 \subsection{IP-Adresse/Subnetzmaske}
+IP-Adresse wird zur genauen Identifikation eines Host genutzt und besteht aus 32Bit.\\
+Sie wird in ClassA-D eingeteilt. Hierzu wird die IP mit der Subnetzmaske AND-Verkn\"upft, das Ergebnis ist die NetzID. \\
+Eine ClassX-Subnetzmaske besteht aus f\"uhrenden Einsen, gefolgt von Nullen. Abk\"urzend wird nur die Anzahl der Einsen angegeben:
+\subsubsection{192.168.1.23/24 (SM: 255.255.255.0)}
+$11000000.10101000.00000001.00010111$ (IP-Adresse)\\
+$11111111.11111111.11111111.00000000$ (Subnetzmaske)\\
+$11000000.10101000.00000001.00000000 \Rightarrow$ (NetzwerkID)\\
+$00000000.00000000.00000000.00010111 \Rightarrow$ (HostID)\\
+\subsubsection{Subnetting}
+Um die z.T. riesigen Netze logisch zu unterteilen, kann von der ClassA-D Begrenzung abgewichen werden, \\
+daraus ergeben sich dann kleine Teilnetze.
+\begin{itemize}
+    \item \textbf{Vorteil} \\
+        - Durch kleine Subnetze wirken sich z.B. Broadcasts nicht auf das Riesennetz aus.\\
+        - Hostgruppen k\"onnen getrennt werden.
+    \item \textbf{Nachteil} Kompromiss: \\
+    'grosses Netz mit Broadcast-Probleme' vs 'kleine Netze die mit Router verbunden werden m\"ussen'
+\end{itemize}
+\begin{verbatim}
+                                Adressen
+123.45.64.0/18      - Provider  16384
+  123.45.64.0/20    - Kunde A   4096
+    123.45.64.0/28  - A1        16
+    123.45.64.16/28 - A2        16
+  123.45.80.0/20    - Kunde B   4096
+123.45.96.0/19      - Kunde C   8192
+\end{verbatim}
+
 \subsection{\"Ubertragungsarten}
+\begin{itemize}
+    \item \textbf{unicast (1:1)} Normale Netzwerkverbindung z.B. Client/Server (Mail, http)
+    \item \textbf{broadcast (1:n)} Ein Host kommuniziert mit allen Knoten im Netzwerk (Subnetz), zB. um einen DHCP-Server zu finden 
+    \item \textbf{multicast (1:m)} Ein Host sendet Daten an mehrere Empf\"anger (z.B. Videostream), die Bandbreite erh\"oht sich nicht mit der Anzahl der Empf\"anger. 
+    \item \textbf{multipeer (m:m)} Mehrere Hosts senden und empfangen gleichberechtigt in einer Hostgruppe. (z.B. Videokonferenz)
+\end{itemize}
+\newpage
 \subsection{AJAX}
+Dient dem Asynchronen Datenaustausch um Inhalte dynamisch nachzuladen. Dabei muss stets nur das Frame der Webseite nachgeladen werden, welches ver\"andert wird.\\
+\begin{itemize}
+    \item \textbf{Voraussetzungen} JavaScript, XML-HTTP-Request. Zur Darstellung wird HTML,JavaScript und DOM genutzt.
+    \item \textbf{Vorteile} \\
+    - Daten k\o"nnen ver\"andert werden, ohne die Seite komplett laden zu m\"ussen.\\
+    - Webanwendungen k\"onnen schneller auf Benutzereingaben reagieren.\\
+    - Kein unn\"otiges Nachladen von statischen Inhalten
+    \item \textbf{Nachteil}\\
+    - Abh\"angigkeit von JavaScript (5\% der User haben es nicht aktiviert)\\
+    - Vor-/Zur\"uckbutton des Browsers nicht mehr funktionst\"uchtig, da Browser i.d.R. nur die statischen Daten speichern\\
+    - Lesezeichen setzen, etc. nicht mehr m\"oglich\\
+    - Testing der Anwendung aufwendig\\
+    - Die Latenzzeit des Server kann nachteilig wirken (hohe Serverlast$\rightarrow$Unzufriedenheit des Users)
+\end{itemize}
+
 \subsection{HTML5}
+Liste von neuen Tags:
+\begin{itemize}
+    \item \textbf{audio} Definiert Audioinhalte
+    \item \textbf{video} Definiert Videoinhalte
+    \item \textbf{time} Datumsdefinitions
+    \item \textbf{article} Artikel
+    \item \textbf{canvas}  2D-Bitmap-Zeichenfl\"ache
+    \item \textbf{details} Detailinformationen zu einem Element
+    \item \textbf{section} Erleichtert das Abgrenzen von unterschiedlichen Inhalten, soll das div-Tag ersetzen
+\end{itemize}
+Weiter wurde der DOCTYPE in HTML5 auf einen HTML-Typen zusammengestrichen, HTML4 kennt noch drei Doctypes.\\
+Die Sprache befindet sich z.Zt. noch in der Entwicklung (MARCO).
+
 \subsection{HTTP}
+\"Ubermittlungsprotokoll f\"ur das WWW, erfunden 1995 von Tim Berners Lee am CERN in Genf.
+\begin{verbatim}
+TCP-Verbindungsaufbau (Handshake)
+-> GET http://URL (Client fordert Inhalt an)
+<- HTTP/1.X 200 OK (Response von Server)
+\end{verbatim}
 
 \section{MPEG}
 \subsection{MPEG1}
+\subsubsection{Subsection}
+Dient zur Speicherreduktion indem Chrominanz im Vergleich zur Luminanz mit veringerter Abtastrate gespeichert wird (PAVM),
+da Helligkeit- besser als Farbunterschiede wahrgenommen werden.\\
+
+\subsubsection{Subsampling}
+\begin{itemize}
+    \item 4:4:4 (MPEG1 verwendet) \\   
+        Unkomprimiert, Farb und Helligkeitsinformationen werden gleich haeufig abgetastet.
+    \item 4:2:2
+        Abtastrate der Farbkanaele in horizontaler Richtung halb so gross wie in vertikalter Richtung.
+        Anwendung beim Analog-Farbsehen wegen dem Zeilensprungverfahren.
+    \item 4:2:0
+        Wird bei digitalen Bildern wie JPEG und MPEG angewedet.
+        Abtastung in beide Richtungen identisch.
+\end{itemize}
+
+\subsection{Kodierung}
+\begin{itemize}
+    \item \textbf{1. Schritt:} Bildaufbereitung: Konversion der Farbraums (von 24 Bit RGB in Y,Cr,Cb), Anwendung der Kodierung
+    \item \textbf{2. Schritt:} 4.2.2 Subsampling
+    \item \textbf{3. Schritt:} Einteilung in Makro-Bloecke
+    \item \textbf{4. Schritt:} Bewegungsvorhersagealgorithmus: Vgl des aktuellen Makro-Blocks mit den umgebenden und den Makro-Bloecken des vor- und nachfolgenden Einzelbilds. Aehnlich wie bei der DPCM wird nur die Differenzinformation gespeichert und der Vektor kodiert.
+    \item \textbf{5.Schritt:} DCT
+    \item \textbf{6. Schritt:} Bildverarbeitung: Kodierung (des Videostroms)
+    \item \textbf{6.1. verschieden Arten von Einzelbildern (Frames):}
+    \begin{itemize}
+        \item \textbf{6.1.1. I-Frame (Intracoded Picture):}
+            Standbild JPEG-aehnlich ohne zusaetzliche Infos. (Kompression gering, wie bei JPEG, jedoch in Echtzeit)
+        \item \textbf{6.1.2. P-Frame (Predictive Coded Picture):}
+            Bezieht sich auf das vorhergehende I-Frame, enthaelt Vektoren und Bilddifferenzinformationen. (Groessere Kompr. als bei I)
+        \item \textbf{6.1.3. B-Frame (Bidirectional Coded Picture):}
+            Vergleicht folgendes (I- oder P-Frame) mit vorangehendem (I- oder P-)Frame und stellt Durchschnittswert dar. (Groesste Kompression)
+        \item \textbf{6.1.4. D-Frame (Direct Coded Picture):}
+            Bei geeigneter Speicherung der I-Frame ueberfluessig. Nur DC-Koeffizienten werden kodiert, daher schlechte Qualitaet.\\
+            Nur ein Farbwert pro 8x8 Block wird gespeichert, Verwendung fuer schnellen Vorlauf.
+        \item \textbf{7.Schritt:} Quantisierung: verlustbehaftet\\
+            Fuer I-Frame gleich wie bei JPEG, bei P- und B-Frames werden nur die DCT-kodierten Anteile quantisiert.\\
+            Bewegunsvektoren fuer P- und B-Frames werden hier allesdings verlustfrei gespeichert.
+        \item \textbf{8. Schritt:} Entropiekodierung, Lauflaengenkodierung, anschliessend Huffmann.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Vergleich MPEP1 - MPEG2}
+Verbesserungen bei MPEG2: Hoehere Aufloesung und Bitraten, Interlaced Videosequenzen, niedrigere Audioabtastraten moeglich, Unterstuetzung verschiedener Qualitaetsprofile, versch. Subsamplingformate.
+\subsection{Unterschiede MPEG2 zu H.261}
+Vorteile MPEG2:
+Breitere Unterstuetzung, hohe Qualitaet bei guter Kompression, keine Echtzeit/Latenzanforderungen
+Vorteile H.261:
+Kontinierliche Bitraten, daher fuer Videokonferenz oder aehnliche Entzeitanwendungen geeignet, geringe Latenz.
+
 \subsection{MPEG4}
+
+
 \subsection{Beispielrechnung}
 \subsubsection{MPEG}
 Bei 800x600, 24Bit, 25fps, 60s sind es pro Minute:\\
 $800 \times 600 \times 24 \times 25 \times 60 \Rightarrow 4320 \times 10^6 Byte$
 \section{CD/DVD}
 
+\ \\
+\includegraphics{Image1.png}
 
 \end{multicols}
 \end{document}
