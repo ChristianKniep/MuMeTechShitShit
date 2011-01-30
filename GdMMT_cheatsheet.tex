@@ -8,7 +8,8 @@
 \usepackage{graphics}
 \usepackage{listings}
 \usepackage{verbatim}
-
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
 % if using A4 paper. (This probably isn't strictly necessary.)
@@ -96,8 +97,122 @@ Daten/Datenkan\"ale werden auf bestimmte Aufl\"osung/Genauigkeit/Abtastrate redu
 \end{itemize}
 
 \section{Kompressionsarten}
-\subsection{Huffmann}
+\subsection{Huffmann} \ \\
+H\"aufige Zeichen $\Rightarrow$ kurze Codew\"orter\\
+Weniger h\"aufige Zeichen $\Rightarrow$ lange Codew\"orter \\
 Zeichen werden nach ihrer H\"aufigkeit geordnet mit verschieden langen Codes repr\"asentiert.
+\subsubsection{Beispiel nach Sonny}
+\paragraph{Schritt 1} \ \\
+\begin{tikzpicture}[shorten >=0.7pt,node distance=1.6cm,auto]
+    \node[state]  (b) [label=above:$2$]                    {b};
+    \node[state]  (a) [right of=b,label=above:$3$]         {a};
+    \node[state]  (d) [right of=a,label=above:$3$]         {d};
+    \node[state]  (e) [right of=d,label=above:$4$]         {e};
+    \node[state]  (c) [right of=e,label=above:$6$]         {c};
+\end{tikzpicture}
+\paragraph{Schritt 2} \ \\
+\begin{tikzpicture}[shorten >=0.7pt,node distance=1.6cm,auto]
+    \node[state]  (d) [label=above:$3$]                     {d};
+    \node[state]  (e) [right of=d,label=above:$4$]          {e};
+    \node[state]  (5) [right of=e]                          {5};
+    \node[state]  (c) [right of=5,label=above:$6$]          {c};
+    \node[state]  (b) [below left of=5,label=above:$2$]     {b};
+    \node[state]  (a) [below right of=5,label=above:$3$]    {a};
+    \path[->]   (5)     edge  node {} (a)
+                (5)     edge  node {} (b)
+                ;
+\end{tikzpicture}
+\paragraph{Schritt 3} \ \\
+\begin{tikzpicture}[shorten >=0.7pt,node distance=1.6cm,auto]
+    \node[state]  (5)                           {5};
+    \node[state]  (c) [right of=5,label=above:$6$]          {c};
+    \node[state]  (b) [below left of=5,label=above:$2$]     {b};
+    \node[state]  (a) [below right of=5,label=above:$3$]    {a};
+    \node[state]  (7) [right of=c]                          {7};
+    \node[state]  (d) [below left of=7,label=above:$3$]     {d};
+    \node[state]  (e) [below right of=7,label=above:$4$]     {e};
+
+    \path[->]   (5)     edge  node {} (a)
+                (5)     edge  node {} (b)
+                (7)     edge  node {} (d)
+                (7)     edge  node {} (e)
+                ;
+\end{tikzpicture}
+
+\paragraph{Schritt 4} \ \\
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto]
+    \node[state]  (7) []                                    {7};
+    \node[state]  (d) [below left of=7,label=above:$3$]     {d};
+    \node[state]  (e) [below right of=7,label=above:$4$]    {e};
+    \node[state]  (11) [right of=7]                         {11};
+    \node[state]  (5) [below right of=11]                   {5};
+    \node[state]  (c) [below left of=11,label=above:$6$]    {c};
+    \node[state]  (b) [below left of=5,label=above:$2$]     {b};
+    \node[state]  (a) [below right of=5,label=above:$3$]    {a};
+    
+    \path[->]   (5)     edge  node {} (a)
+                (5)     edge  node {} (b)
+                (7)     edge  node {} (d)
+                (7)     edge  node {} (e)
+                (11)     edge  node {} (c)
+                (11)     edge  node {} (5)
+                ;
+\end{tikzpicture}
+
+\paragraph{Schritt 5} \ \\
+\begin{tikzpicture}[shorten >=1pt,node distance=1.6cm,auto]
+    \node[state]  (18) []                                    {18};
+    \node[state]  (7)  [below left of=18]                    {7};
+    \node[state]  (d)  [below left of=7,label=above:$3$]     {d};
+    \node[state]  (e)  [below right of=7,label=above:$4$]    {e};
+    \node[state]  (11) [below right of=18]                         {11};
+    \node[state]  (5)  [below right of=11]                   {5};
+    \node[state]  (c)  [below left of=11,label=above:$6$]    {c};
+    \node[state]  (b)  [below left of=5,label=above:$2$]     {b};
+    \node[state]  (a)  [below right of=5,label=above:$3$]    {a};
+    
+    \path[->]   (5)     edge  node {} (a)
+                (5)     edge  node {} (b)
+                (7)     edge  node {} (d)
+                (7)     edge  node {} (e)
+                (11)     edge  node {} (c)
+                (11)     edge  node {} (5)
+                (18)     edge  node {} (7)
+                (18)     edge  node {} (11)
+                ;
+\end{tikzpicture}
+
+\paragraph{Schritt 5} \ \\
+\begin{tikzpicture}[shorten >=1pt,node distance=1.6cm,auto]
+    \node[state]  (18) []                                    {18};
+    \node[state]  (7)  [below left of=18]                    {7};
+    \node[state]  (d)  [below left of=7,label=below:$3$]     {d};
+    \node[state]  (e)  [below right of=7,label=below:$4$]    {e};
+    \node[state]  (11) [below right of=18]                         {11};
+    \node[state]  (5)  [below right of=11]                   {5};
+    \node[state]  (c)  [below left of=11,label=below:$6$]    {c};
+    \node[state]  (b)  [below left of=5,label=below:$2$]     {b};
+    \node[state]  (a)  [below right of=5,label=below:$3$]    {a};
+    
+    \path[->]   (5)     edge  node {1} (a)
+                (5)     edge  node {0} (b)
+                (7)     edge  node {1} (d)
+                (7)     edge  node {0} (e)
+                (11)     edge  node {0} (c)
+                (11)     edge  node {1} (5)
+                (18)     edge  node {0} (7)
+                (18)     edge  node {1} (11)
+                ;
+\end{tikzpicture}
+$\Rightarrow$ \\
+d: 00\\
+e: 01\\
+b: 100\\
+a: 101\\
+c: 11\\
+Mittlere Codel\"ange (Kompressionsfaktor): 41/18
+
+
 \subsection{Laufl\"angenkodierung}
 Fasst direkt aufeinanderfolgende Zeichenketten zusammen. ($aaabbb \Rightarrow 3a3b$)
 
@@ -174,7 +289,7 @@ $1MB \Rightarrow 10^6 Byte || 1MiB \Rightarrow 1024 \times 1024 Byte$ \\
 $1GB \Rightarrow 10^9 Byte || 1GiB \Rightarrow 1024 \times 1024 \times 1024 Byte$ \\
 \subsubsection{PCM: 44.1KHz,16Bit,stereo,20min}
 $44.100 \times 16 \times 2 \times 20 \times 60 \Rightarrow Bit$ \\
-$44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow 2116800 Byte \approx 2.1 MB$ \\
+$44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow 211680000 Byte \approx 211.7 MB$ \\
 \subsubsection{MP3: 128kbit/s}
 
 
@@ -294,7 +409,7 @@ daraus ergeben sich dann kleine Teilnetze.
     \item \textbf{multicast (1:m)} Ein Host sendet Daten an mehrere Empf\"anger (z.B. Videostream), die Bandbreite erh\"oht sich nicht mit der Anzahl der Empf\"anger. 
     \item \textbf{multipeer (m:m)} Mehrere Hosts senden und empfangen gleichberechtigt in einer Hostgruppe. (z.B. Videokonferenz)
 \end{itemize}
-\newpage
+
 \subsection{AJAX}
 Dient dem Asynchronen Datenaustausch um Inhalte dynamisch nachzuladen. Dabei muss stets nur das Frame der Webseite nachgeladen werden, welches ver\"andert wird.\\
 \begin{itemize}
@@ -380,19 +495,37 @@ da Helligkeit- besser als Farbunterschiede wahrgenommen werden.\\
 \subsection{Vergleich MPEP1 - MPEG2}
 Verbesserungen bei MPEG2: Hoehere Aufloesung und Bitraten, Interlaced Videosequenzen, niedrigere Audioabtastraten moeglich, Unterstuetzung verschiedener Qualitaetsprofile, versch. Subsamplingformate.
 \subsection{Unterschiede MPEG2 zu H.261}
-Vorteile MPEG2:
+\subsubsection{Vorteile MPEG2:}
 Breitere Unterstuetzung, hohe Qualitaet bei guter Kompression, keine Echtzeit/Latenzanforderungen
-Vorteile H.261:
+\subsubsection{Vorteile H.261:}
 Kontinierliche Bitraten, daher fuer Videokonferenz oder aehnliche Entzeitanwendungen geeignet, geringe Latenz.
-
 \subsection{MPEG4}
+Ein grosser Unterschied zu MPEG1/2 ist, dass MPEG4 keine einheitlichen Kompressionsverfahren vorgegeben sind,
+sondern vielmehr ein vordefinierter Katalog an m\"oglichen Kompremierungen f\"ur Audio und Video geschaffen wurde.\\
+Es k\"onnen beispielsweise interaktive Elemente, audiovisuelle Object und Animationen wesentlich leichter eingebaut werden.
+\subsubsection{VRML}
+Erm\"oglicht einzelne Elemente und Objekte interaktiv zu ver\"andern und neu zusammenzuf\"ugen.
 
+\subsubsection{MPEG4-Parts}
+MPEG4 kann aus mehreren Ojekten bestehen. Ein Video kann aus diesen Parts beliebig zusammengestellt sein.\\
+Der wichtigste Part ist der Part2 'visual part'.
+
+\subsubsection{Verbesserungen}
+\begin{itemize}
+    \item Focus auf Echtzeit (z.B. MP4-Konferenz)
+    \item Sonja denkt laut: 'Eigentlich w\"are HD in MPEG3 gewesen, da es als AddOn jedoch schon in MPEG2 m\"oglich war, sind sie gleich auf MPEG4 gegangen.'
+    \item Marco hat noch was: Dateigr\"osse ist bei MPEG4 wesentlich geringer als bei den Vorg\"anger
+    \item MPEG2 hat 4-9MB/s, MPEG4 nur wenige KB/s
+\end{itemize}
 
 \subsection{Beispielrechnung}
 \subsubsection{MPEG}
 Bei 800x600, 24Bit, 25fps, 60s sind es pro Minute:\\
 $800 \times 600 \times 24 \times 25 \times 60 \Rightarrow 4320 \times 10^6 Byte$
+
 \section{CD/DVD}
+\subsection{Unterschiede}
+
 
 \newpage
 \includegraphics{Image1.png}
