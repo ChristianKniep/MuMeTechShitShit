@@ -343,6 +343,7 @@ $44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow 211680000 Byte \approx
 
 \subsection{JPEG}
 \subsubsection{JPEG-Kodierung}
+\textbf{Siehe Anhang} \\
 \textbf{Subsampling (verlustbehaftet und verlustfrei, z.B. ist 4:4:4 verlustfrei), DCT auch verlustfrei, Quantisierung bringt Datenreduktion (nicht verlustfrei umkehrbar)}
 \begin{itemize}
     \item \textbf{Bildvorverarbeitung (verlustfrei)}
@@ -353,6 +354,7 @@ $44.100 \times 2 \times 2 \times 20 \times 60 \Rightarrow 211680000 Byte \approx
     \item \textbf{Bildverarbeitung (theo. verlustfrei)}
     \begin{itemize}
         \item Abtastung und Digitaliserung der Bildinformationen.
+        \item Umwandlung des Farbraums in YCbCr
         \item Einteilung in 8x8-Pixel-Bl\"ocke, wobei jeder Pixel mit 8bit kodiert wird (optimaler Kompromis zwischen Laufzeit und Quali; Zahl f\"ur DCT).
         \item DCT Der 8Bit-Farbwert wird vom Ortsbereich- in den Frequenzbereich transformiert. \\
             Das Ergebnis ist eine 8x8-Frequenzraummatrix S, $S_{00}$ entspricht dem Anteil der Freuqenz 0 (Grundfarbton), dieser ist der DC-Koeffizient.\\
@@ -533,6 +535,7 @@ $800 \times 600 \times 24 \times 25 \times 60 \Rightarrow 4320 \times 10^6 Byte$
 
 \newpage
 \includegraphics{Image1.png}
-
+\newpage
+\includegraphics[width=\textwidth]{uebersicht_jpeg.png} 
 \end{multicols}
 \end{document}
